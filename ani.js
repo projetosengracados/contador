@@ -36,3 +36,39 @@ function trocarSlide() {
 }
 
 setInterval(trocarSlide, 3000);
+
+
+function criarCoracao() {
+  const coracao = document.createElement("div");
+  coracao.classList.add("heart");
+  coracao.innerHTML = "❤️";
+
+  // posição horizontal aleatória
+  coracao.style.left = Math.random() * 100 + "vw";
+
+  // tamanho aleatório
+  const tamanho = Math.random() * 20 + 10;
+  coracao.style.fontSize = tamanho + "px";
+
+  // duração da queda
+  const duracao = Math.random() * 3 + 2;
+  coracao.style.animationDuration = duracao + "s";
+
+  document.body.appendChild(coracao);
+
+  // remover após a animação
+  setTimeout(() => {
+    coracao.remove();
+  }, duracao * 1000);
+}
+
+// cria vários corações continuamente
+setInterval(criarCoracao, 300);
+
+const carta = document.getElementById("carta");
+
+carta.addEventListener("click", () => {
+  carta.classList.toggle("aberta"); /* Ao clicar, alterna o estado da carta */
+});
+
+
